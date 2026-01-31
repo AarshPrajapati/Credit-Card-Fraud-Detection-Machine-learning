@@ -26,39 +26,41 @@ This project focuses on building a model that **effectively identifies fraudulen
 ---
 
 ## 📊 Dataset
-📌 The dataset is not included in this repository due to size limitations.  
 
+📌 The dataset is **not included** in this repository due to size limitations.  
 
-- **Source:** European Credit Card Transactions Dataset
-- **Total Transactions:** 284,807
-- **Fraud Rate:** ~0.17%
-- **Target Column:** `Class` (1 = Fraud, 0 = Normal)
+- **Source:** [European Credit Card Transactions Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud?resource=download)  
+- **Total Transactions:** 284,807  
+- **Fraud Rate:** ~0.17%  
+- **Target Column:** `Class` (1 = Fraud, 0 = Normal)  
 
 ### Features
-- `V1` – `V28`: PCA-transformed and anonymized features (for privacy)
-- `Amount`: Transaction amount
-It can be downloaded from Kaggle: [Credit Card Fraud Detection Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud?resource=download)
+
+- `V1` – `V28`: PCA-transformed and anonymized features (for privacy)  
+- `Amount`: Transaction amount  
+
 ---
 
 ## 📁 Project Structure
 Credit-Card-Fraud-Detection/
 │
 ├── api/
-│ └── main.py # FastAPI inference service
+│   └── main.py           # FastAPI inference service
 │
 ├── models/
-│ ├── fraud_model.pkl # Trained ML model
-│ └── scaler.pkl # Feature scaler
+│   ├── fraud_model.pkl   # Trained ML model
+│   └── scaler.pkl        # Feature scaler
 │
 ├── notebooks/
-│ └── 01_data_exploration.ipynb
+│   └── 01_data_exploration.ipynb
 │
 ├── data/
-│ └── creditcard.csv # (not included in repo)
+│   └── creditcard.csv    # Dataset not included
 │
 ├── requirements.txt
 ├── Dockerfile
 └── README.md
+
 
 ---
 
@@ -130,6 +132,8 @@ A **FastAPI-based REST API** is provided for real-time fraud prediction.
   "V28": 0.12,
   "Amount": 250.0
 }
+
+### Sample Response
 {
   "fraud_probability": 0.42,
   "decision": "REVIEW"
