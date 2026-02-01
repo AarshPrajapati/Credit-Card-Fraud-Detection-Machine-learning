@@ -2,6 +2,8 @@ from fastapi import FastAPI
 import joblib
 import numpy as np
 import pandas as pd
+from decision_engine import make_decision
+
 
 # Initialize API
 app = FastAPI(title="Fraud Detection API")
@@ -39,11 +41,12 @@ def predict(transaction: dict):
     
     # Apply threshold
     threshold = 0.3
-    decision = "FRAUD" if prob >= threshold else "APPROVE"
-    
+    decision_data = make_decision(prob)
+
     return {
-        "fraud_probability": float(prob),
-        "decision": decision
+        "fraud_probability": round(float(prob), 4),
+        "risk_level": decision_data["risk_level"],
+        "decision": decision_data["decision"]
     }
 
 
